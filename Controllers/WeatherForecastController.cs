@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
 				Date = DateTime.Now.AddDays(index),
 				TemperatureC = rng.Next(-20, 55),
 				Summary = Summaries[rng.Next(Summaries.Length)],
-				GalacticNumber = 42
+				GalacticNumber = rng.Next(1,10)
 			})
 			.ToArray();
 		}
