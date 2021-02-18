@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
 	{
 		private static readonly string[] Summaries = new[]
 		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Anjara tu pues"
 		};
 
 		private readonly ILogger<WeatherForecastController> _logger;
@@ -35,6 +35,20 @@ namespace WebApplication1.Controllers
 				GalacticNumber = rng.Next(1,10)
 			})
 			.ToArray();
+		}
+
+		[HttpGet("list")]
+		public IEnumerable<string> Get_List()
+		{
+			return Summaries.ToList();
+		}
+
+		[HttpGet("list/{id}")]
+		public string Get_List_byID(int id)
+		{
+			if(id < 0 || id > Summaries.Length -1)
+				return new string ("id not found");
+			return Summaries[id];
 		}
 	}
 }
